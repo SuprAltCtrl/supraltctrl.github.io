@@ -1,0 +1,534 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>            Java - Comprobar expresión matemática - Programación      Ciberseguridad      </title>
+<meta name="description" content="Dada una expresión matemática, comprobar que todos los paréntesis están nivelados mediante una pila">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Programación | Ciberseguridad">
+<meta property="og:title" content="Java - Comprobar expresión matemática">
+<meta property="og:url" content="http://0.0.0.0:4000/balanceo-parentesis-java/">
+
+
+  <meta property="og:description" content="Dada una expresión matemática, comprobar que todos los paréntesis están nivelados mediante una pila">
+
+
+
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/images/java/java.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-03-07T00:00:00-06:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/balanceo-parentesis-java/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "SuprAltCtrl",
+      "url": "http://0.0.0.0:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Programación | Ciberseguridad Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/" >Artículos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categorías</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Etiquetas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/buscador/" >Buscador</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://0.0.0.0:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Java - Comprobar expresión matemática</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.png" alt="SuprAltCtrl" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">SuprAltCtrl</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        CEH | DevOps | Developer
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/supraltctrl" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/SuprAltCtrl" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Java - Comprobar expresión matemática">
+    <meta itemprop="description" content="Dada una expresión matemática, comprobar que todos los paréntesis están nivelados mediante una pila">
+    <meta itemprop="datePublished" content="March 07, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Java - Comprobar expresión matemática
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-03-07T00:00:00-06:00">March 07, 2021 </time>&emsp;
+          
+          
+        </p>
+        <h1 id="enunciado">Enunciado</h1>
+
+<p> 
+Vamos a crear una función matemática que debe comprobar el formato de la fórmula que se pasa por parámetro, comprobando que todos los paréntesis que tiene la fórmula están nivelados (es decir, están por pares). Devolverá <strong>true</strong> si están por parejas y <strong>false</strong> en caso contrario (hay más paréntesis de apertura que de cierre o viceversa)
+
+Por ejemplo:
+<ul>
+    <li>La fórmula (4+3)) no está nivelado, ya que hay un paréntesis de cierre más que de apertura</li>
+    <li>La fórmula (4*(3+2) no está nivelada, ya que hay un paréntesis de apertura más que de cierre</li>
+    <li>La fórmula (4*(3+2)) sí está nivelada, ya que hay el mismo número de paréntesis de apertura que de cierre</li>
+</ul>
+</p>
+
+<h1 id="código">Código</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Stack</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Balanceador</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">teclado</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"======= MENU ======="</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1. Comprobar formato cadena"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2. Test"</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="n">askOption</span><span class="o">(</span><span class="n">teclado</span><span class="o">);</span>
+		<span class="k">switch</span><span class="o">(</span><span class="n">option</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introduzca una formula:"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">formula</span> <span class="o">=</span> <span class="n">teclado</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+				<span class="n">showInfo</span><span class="o">(</span><span class="n">checkFormat</span><span class="o">(</span><span class="n">formula</span><span class="o">));</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+				<span class="n">test</span><span class="o">();</span>
+				<span class="k">break</span><span class="o">;</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">showInfo</span><span class="o">(</span><span class="n">checkFormat</span><span class="o">(</span><span class="s">"(4+3))"</span><span class="o">));</span> <span class="c1">// False hay un paréntesis de cierra mas que de apertura.</span>
+		<span class="n">showInfo</span><span class="o">(</span><span class="n">checkFormat</span><span class="o">(</span><span class="s">"(4*(3+2)"</span><span class="o">));</span> <span class="c1">// False hay un paréntesis de apertura más que de cierre</span>
+		<span class="n">showInfo</span><span class="o">(</span><span class="n">checkFormat</span><span class="o">(</span><span class="s">"(4*(3+2))"</span><span class="o">));</span> <span class="c1">// True esta nivelado</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">resultado</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">resultado</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Los parentesis están balanceados"</span><span class="o">);</span>
+		<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Los parentesis no están balanceados"</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">checkFormat</span><span class="o">(</span><span class="nc">String</span> <span class="n">formula</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">formula</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="kt">char</span> <span class="n">caracter</span> <span class="o">=</span> <span class="n">formula</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">caracter</span> <span class="o">==</span> <span class="sc">'('</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">caracter</span><span class="o">);</span>
+			<span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">caracter</span> <span class="o">==</span> <span class="sc">')'</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">if</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">empty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">()</span> <span class="o">!=</span> <span class="sc">')'</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+				<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+					<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">caracter</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">askOption</span><span class="o">(</span><span class="nc">Scanner</span> <span class="n">teclado</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introduce una opción:"</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">opcion</span><span class="o">;</span>
+		<span class="k">do</span> <span class="o">{</span>
+			<span class="n">opcion</span> <span class="o">=</span> <span class="n">teclado</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">opcion</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">opcion</span> <span class="o">!=</span><span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"No es una opción correcta. Introduzca una opción nueva."</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span><span class="k">while</span><span class="o">(</span><span class="n">opcion</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">opcion</span><span class="o">!=</span><span class="mi">2</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">opcion</span><span class="o">;</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h1 id="explicación">Explicación</h1>
+
+<p>El método más importante es <b>checkFormat</b> en el que se comprueba si están balanceados los paréntesis en una fórmula que se pasa por parámetro.</p>
+
+<p>Tenemos dos situaciones:</p>
+
+<ul>
+  <li>
+    <p>Que sea paréntesis izquierdo:</p>
+
+    <p>Solo hay que añadirlo a la cola.</p>
+  </li>
+  <li>
+    <p>Que sea paréntesis derecho:</p>
+
+    <p>Si la cola está vacía y la cima de la pila es distinto de paréntesis derecho entonces sacamos la cima de la pila.</p>
+
+    <p>En el caso que no se cumpla la condición anterior, tenemos que añadirlo a la pila.</p>
+  </li>
+</ul>
+
+<p>Cuando se ejecuta el programa nos muestra un menú con dos opciones:</p>
+
+<ol>
+    <li> <b>Comprobar una cadena:</b> le pasamos una cadena por teclado y nos muestra si están balanceados los paréntesis.</li>
+    <li> <b>Test:</b> Muestra la salida de los ejemplos que vienen en el enunciado.</li>
+</ol>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#java" class="page__taxonomy-item" rel="tag">Java</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#programaci%C3%B3n" class="page__taxonomy-item" rel="tag">Programación</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#stack" class="page__taxonomy-item" rel="tag">Stack</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Fecha:</strong> <time datetime="2021-03-07T00:00:00-06:00">March 07, 2021</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/empezando-proyecto/" class="pagination--pager" title="Proyecto Personal - Empezando 2021.
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 SuprAltCtrl</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

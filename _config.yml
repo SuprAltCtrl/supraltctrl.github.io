@@ -104,7 +104,7 @@ author:
   name             : "SuprAltCtrl"
   avatar           : "/assets/images/avatar.png"
   bio              : "CEH | DevOps | Developer"
-  uri              :
+  uri              : "www.google.com"
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
   codepen          :
