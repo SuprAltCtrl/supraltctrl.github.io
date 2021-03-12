@@ -29,6 +29,10 @@ Aquí tienes un ejemplo de análisis de las primeras 3 páginas de La Gitanilla,
 
 <p align="justify">Esta es una de las muchas soluciones que tiene el ejercicio, para cada método viene una pequeña explicación de lo que realiza el método.</p>
 
+<p>
+	<span style="color:red"><b>[Actualización 12/03/2021]</b></span> Se ha corregido un error que había en el método getIndex y countCharacters que hacía que no totalizara bien los caracteres.
+</p>
+
 ```java
 import java.io.BufferedReader;
 import java.io.FileReader;
