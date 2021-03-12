@@ -103,7 +103,7 @@ public class Main {
 		for (int i = 0; i < texto.length(); i++) {
 			char aux = texto.charAt(i);
 			int index = getIndex(abecedario, aux);
-			totales[index]++;
+			if (index != -1) totales[index]++;
 		}
 		return totales;
 	}
@@ -116,7 +116,7 @@ public class Main {
 	 */
 	private static int getIndex(char[] abecedario, char caracter) {
 		boolean encontrado = false;
-		int index = 0;
+		int index = -1;
 		for (int i = 0; i < abecedario.length && !encontrado; i++) {
 			if (abecedario[i] == caracter) {
 				index = i;
