@@ -4,9 +4,6 @@ title: Java - Comprobar expresión matemática
 excerpt: "Dada una expresión matemática, comprobar que todos los paréntesis están nivelados mediante una pila"
 date: 2021-03-07
 classes: wide
-header:
-  teaser: /assets/images/java/java.png
-  teaser_home_page: true
 tags:
   - Programación
   - Java
