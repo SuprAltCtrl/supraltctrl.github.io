@@ -11,6 +11,7 @@ tags:
   - Htb
   - Pentesting
   - Windows
+  - Easy
 ---
 
 <p align="center">
