@@ -18,21 +18,6 @@ tags:
 <img src="/assets/images/htb/optimum/optimum.png">
 </p>
 
-# Estructura final de directorios.
-
-```bash
-.
-├── content
-├── exploits
-│   └── 49584.py
-├── nmap
-│   ├── allPorts
-│   └── targeted
-└── scripts
-
-4 directories, 3 files
-```
-
 # Enumeración
 
 ```bash
